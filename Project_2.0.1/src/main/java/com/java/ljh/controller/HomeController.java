@@ -1,4 +1,4 @@
-package com.java.ljh;
+package com.java.ljh.controller;
 
 import java.text.DateFormat;
 import java.util.Date;

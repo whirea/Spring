@@ -4,8 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MemberSQL">
 
-	<select id="selectMember" resultType="hashmap">
-		select * from member
+	<select id="select" resultType="hashmap">
+		select 
+			MEM_NO, MEM_EMAIL, MEM_PW, MEM_NAME, 
+			DATE_FORMAT(REG_DATE, '%Y-%m-%d %H:%i:%s') AS REG_DATE,
+			DATE_FORMAT(MOD_DATE, '%Y-%m-%d %H:%i:%s') AS MOD_DATE,
+			DEL_YN			
+		from member
 	</select>
 	
 </mapper>

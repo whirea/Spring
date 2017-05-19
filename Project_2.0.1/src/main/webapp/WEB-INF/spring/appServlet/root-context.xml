@@ -7,7 +7,7 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	<context:component-scan base-package="com.java.web"/>
+	<context:component-scan base-package="com.java"/>
 	
 	<!-- JDBC -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

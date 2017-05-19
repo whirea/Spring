@@ -21,43 +21,15 @@
     <article>
         <div class="latest-list-wrap">
             <div class="latest-list">
-                <div>
+                <div ng-repeat="row in dataSource">
                     <a href="#/detail">
-                        <img src="resources/webpage/img/files/Beauty_and_the_Beast_poster.jpg" alt="">
+                        <img src="resources/webpage/img/files/{{row.FILE_NAME}}" alt="{{row.FILE_NAME}}">
                     </a>
                     <div>
-                        <a href="">미녀와 야수</a><br>
-                        <p>2017 로맨스/멜로</p> 
+                        <a href="">{{row.DETAIL_TITLE}}</a><br>
+                        <p>{{DETAIL_YEAR}} 로맨스/멜로</p> 
                     </div>              
-                </div>
-                <div>
-                    <img src="resources/webpage/img/files/Confidential_Assignment_poster.jpg" alt="">
-                    <div>
-                        <a href="">공조</a><br>
-                        <p>2017 액션</p> 
-                    </div>
-                </div>
-                <div>
-                    <img src="resources/webpage/img/files/Kong_Skull_Island_poster.jpg" alt="">
-                    <div>
-                        <a href="">콩</a><br>
-                        <p>2017 액션/판타지</p> 
-                    </div>
-                </div>
-                <div>
-                    <img src="resources/webpage/img/files/La_La_Land_poster.jpg" alt="">
-                    <div>
-                        <a href="">라라랜드</a><br>
-                        <p>2017 로맨스/멜로</p> 
-                    </div>
-                </div>
-                <div>
-                    <img src="resources/webpage/img/files/La_La_Land_poster.jpg" alt="">
-                    <div>
-                        <a href="">라라랜드</a><br>
-                        <p>2017 로맨스/멜로</p> 
-                    </div>
-                </div>
+                </div>                
             </div>
         </div>
     </article>

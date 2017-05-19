@@ -51,97 +51,6 @@ myApp.run(function($rootScope){
     $rootScope.hhh = "/resources/webpage/admin/header.jsp";
     $rootScope.f = "/resources/webpage/main/footer.jsp";
     $rootScope.a = "/resources/webpage/admin/admin.jsp"; 
-    
-    $rootScope.list = [
-        {
-        "DETAIL_NO" : 1,
-        "DETAIL_TITLE" : "미녀와 야수",
-        "DETAIL_TIT_EN" : "Beauty and the Beast",
-        "DETAIL_YEAR" : "2017.03.16",
-        "DETAIL_SCORE" : "7.7",
-        "DETAIL_NATION" : "미국",
-        "DETAIL_RUNTIME" : "129",
-        "DETAIL_DIRECTOR" : "빌 콘돈",
-        "DETAIL_CLASS" : "전체",
-        "DETAIL_RESRV" : "1",
-        "DETAIL_STACK" : "4,892,648",
-        "DETAIL_STORY" : "스크린에 재탄생한 세기의 걸작!",
-        "CONTENT_CDS" : "0",
-        "REG_DATE" : "2017.04.19 21:08",
-        "MOD_DATE" : "",
-        "URL" : "../img/contents/00_movie/Beauty_and_the_Beast/Beauty_and_the_Beast.jpg",
-        "ACTOR" : [{"NAME" : "엠마 왓슨"},
-                   {"NAME" : "댄 스티븐스"},
-                   {"NAME" : "루크 에반스"}],
-        "RANK" : "1"
-        },
-        {
-        "DETAIL_NO" : 1,
-        "DETAIL_TITLE" : "미녀와 야수",
-        "DETAIL_TIT_EN" : "Beauty and the Beast",
-        "DETAIL_YEAR" : "2017.03.16",
-        "DETAIL_SCORE" : "7.7",
-        "DETAIL_NATION" : "미국",
-        "DETAIL_RUNTIME" : "129",
-        "DETAIL_DIRECTOR" : "빌 콘돈",
-        "DETAIL_CLASS" : "전체",
-        "DETAIL_RESRV" : "1",
-        "DETAIL_STACK" : "4,892,648",
-        "DETAIL_STORY" : "스크린에 재탄생한 세기의 걸작!",
-        "CONTENT_CDS" : "0",
-        "REG_DATE" : "2017.04.19 21:08",
-        "MOD_DATE" : "",
-        "URL" : "../img/contents/00_movie/Beauty_and_the_Beast/Beauty_and_the_Beast.jpg",
-        "ACTOR" : [{"NAME" : "엠마 왓슨"},
-                   {"NAME" : "댄 스티븐스"},
-                   {"NAME" : "루크 에반스"}],
-        "RANK" : "1"
-        },
-        {
-        "DETAIL_NO" : 1,
-        "DETAIL_TITLE" : "미녀와 야수",
-        "DETAIL_TIT_EN" : "Beauty and the Beast",
-        "DETAIL_YEAR" : "2017.03.16",
-        "DETAIL_SCORE" : "7.7",
-        "DETAIL_NATION" : "미국",
-        "DETAIL_RUNTIME" : "129",
-        "DETAIL_DIRECTOR" : "빌 콘돈",
-        "DETAIL_CLASS" : "전체",
-        "DETAIL_RESRV" : "1",
-        "DETAIL_STACK" : "4,892,648",
-        "DETAIL_STORY" : "스크린에 재탄생한 세기의 걸작!",
-        "CONTENT_CDS" : "0",
-        "REG_DATE" : "2017.04.19 21:08",
-        "MOD_DATE" : "",
-        "URL" : "../img/contents/00_movie/Beauty_and_the_Beast/Beauty_and_the_Beast.jpg",
-        "ACTOR" : [{"NAME" : "엠마 왓슨"},
-                   {"NAME" : "댄 스티븐스"},
-                   {"NAME" : "루크 에반스"}],
-        "RANK" : "1"
-        },
-        {
-        "DETAIL_NO" : 1,
-        "DETAIL_TITLE" : "미녀와 야수",
-        "DETAIL_TIT_EN" : "Beauty and the Beast",
-        "DETAIL_YEAR" : "2017.03.16",
-        "DETAIL_SCORE" : "7.7",
-        "DETAIL_NATION" : "미국",
-        "DETAIL_RUNTIME" : "129",
-        "DETAIL_DIRECTOR" : "빌 콘돈",
-        "DETAIL_CLASS" : "전체",
-        "DETAIL_RESRV" : "1",
-        "DETAIL_STACK" : "4,892,648",
-        "DETAIL_STORY" : "스크린에 재탄생한 세기의 걸작!",
-        "CONTENT_CDS" : "0",
-        "REG_DATE" : "2017.04.19 21:08",
-        "MOD_DATE" : "",
-        "URL" : "../img/contents/00_movie/Beauty_and_the_Beast/Beauty_and_the_Beast.jpg",
-        "ACTOR" : [{"NAME" : "엠마 왓슨"},
-                   {"NAME" : "댄 스티븐스"},
-                   {"NAME" : "루크 에반스"}],
-        "RANK" : "1"
-        }
-    ];
 });
 
 
@@ -149,17 +58,23 @@ myApp.run(function($rootScope){
 /*
 컨트롤러
 */
-myApp.controller('mainCtrl',['$scope', function($scope){
+
+myApp.controller('mainCtrl', function($scope,$http){
     /*
     드롭다운 메뉴
     */
+	$http.post("detail/select").then(function(response) {
+        console.log(response.data);
+        $scope.dataSource = [];
+        $scope.dataSource = response.data.rows;
+    });
+	
     var $index = '';
     $scope.toggleCustom = function($index) { 
         if($('.genre').eq($index).css('display')=='none'){
             /*reset*/
             $('.sort-menu i').attr('class','fa fa-angle-down')
-            $('.genre').slideUp(0); 
-            
+            $('.genre').slideUp(0);             
             $('.sort-menu i').eq($index).attr('class','fa fa-angle-up')
             $('.genre').eq($index).css('display','flex');
         }else{
@@ -168,7 +83,7 @@ myApp.controller('mainCtrl',['$scope', function($scope){
         }
     };
             
-}]); 
+}); 
 
 
  myApp.controller('adminCtrl', ['$scope', 'Upload', '$timeout', function ($scope, Upload, $timeout) {
